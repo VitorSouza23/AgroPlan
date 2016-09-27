@@ -1,0 +1,10 @@
+<ion-view view-title="AgroPlan">
+  <ion-content>
+    <ion-list>
+      <ion-item ng-repeat="playlist in playlists" href="#/app/playlists/{{playlist.id}}">
+        {{playlist.title}}
+      </ion-item>
+    </ion-list>
+    <button class="button button-full button-positive" ng-click="salvarPlano()">Salvar Plano de Negócios</button>
+  </ion-content>
+</ion-view>
