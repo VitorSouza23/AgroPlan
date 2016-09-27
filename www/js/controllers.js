@@ -262,3 +262,55 @@ appctrl.controller('PlanoDeMarketingCtrl', function($scope, $ionicModal, $ionicH
     }
   };
 });
+
+appctrl.controller('PlanoOperacionalCtrl', function($scope, $ionicModal, $ionicHistory, $ionicListDelegate) {
+  $scope.po = new PlanoOperacional();
+  $scope.editar = false;
+
+  $scope.addPlanoOperacional = function(){
+    $scope.plano.PlanoOperacional = $scope.po;
+    $scope.back();
+  };
+
+  $scope.addCargo = function(){
+    if(!$scope.editar){
+      $scope.po.addCargo($scope.cargo);
+    }else{
+      $scope.po.editarCargo($scope.cargo);
+      $scope.editar = false;
+      $ionicListDelegate.closeOptionButtons();
+    }
+    $scope.closeCargos();
+  };
+
+  $scope.botaoRemoverCargo = function(cargo){
+    $scope.po.removerCargo(cargo);
+  };
+
+  $scope.botaoEditarCargo = function(cargo){
+    $scope.cargo = cargo;
+    $scope.editar = true;
+    $scope.openCargos();
+  };
+
+  $scope.back = function(){
+    $ionicHistory.goBack();
+  };
+
+  $ionicModal.fromTemplateUrl('templates/cargos.html', {
+    scope: $scope
+  }).then(function(modal) {
+    $scope.modal = modal;
+  });
+
+  $scope.closeCargos = function() {
+    $scope.modal.hide();
+  };
+
+  $scope.openCargos= function() {
+    $scope.modal.show();
+    if(!$scope.editar){
+      $scope.cargo = new Cargo();
+    }
+  };
+});

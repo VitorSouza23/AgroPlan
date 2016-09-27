@@ -1,5 +1,6 @@
 function PlanoDeNegocio(){
   this.sumarioExecutivo;
   this.analiseDeMercado;
-  this.PlanoDeMarketing;
+  this.planoDeMarketing;
+  this.planoOperacional;
 };

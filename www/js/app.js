@@ -103,7 +103,7 @@ app.config(function($stateProvider, $urlRouterProvider) {
     views: {
       'menuContent': {
         templateUrl: 'templates/planoOperacionalTemplate.html',
-        controller: 'PlaylistCtrl'
+        controller: 'PlanoOperacionalCtrl'
       }
     }
   })
@@ -198,6 +198,15 @@ app.config(function($stateProvider, $urlRouterProvider) {
     }
   })
 
+  .state('app.cargos', {
+    url: '/playlists/4/cargos',
+    views: {
+      'menuContent': {
+        templateUrl: 'templates/cargos.html',
+        controller: 'PlanoOperacionalCtrl'
+      }
+    }
+  })
   ;
 
   // if none of the above states are matched, use this as the fallback
