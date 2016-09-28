@@ -1,0 +1,93 @@
+<ion-view view-title="Plano de Financeiro">
+  <ion-content>
+    <!--Principais Produtos-->
+    <div class="list">
+      <div class="item item-divider">
+        Principais Itens
+      </div>
+      <button  class="button button-full icon-left ion-plus-circled button-balanced" ng-click="openEquipamentos()">Esquipamento</button>
+      <ion-list>
+        <ion-item ng-repeat="">
+          <div class="row">
+            <div class="col col-90">
+              {{}}
+              <ion-option-button class="button-positive ion-edit" ng-click=""></ion-option-button>
+              <ion-option-button class="ion-minus-circled button-assertive" ng-click=""></ion-option-button>
+
+            </div>
+          </div>
+        </ion-item>
+      </ion-list>
+
+      <button  class="button button-full icon-left ion-plus-circled button-balanced" ng-click="">Maquina</button>
+      <ion-list>
+        <ion-item ng-repeat="">
+          <div class="row">
+            <div class="col col-90">
+              {{}}
+              <ion-option-button class="button-positive ion-edit" ng-click=""></ion-option-button>
+              <ion-option-button class="ion-minus-circled button-assertive" ng-click=""></ion-option-button>
+
+            </div>
+          </div>
+        </ion-item>
+      </ion-list>
+
+      <button  class="button button-full icon-left ion-plus-circled button-balanced" ng-click="">Móvel</button>
+      <ion-list>
+        <ion-item ng-repeat="">
+          <div class="row">
+            <div class="col col-90">
+              {{}}
+              <ion-option-button class="button-positive ion-edit" ng-click=""></ion-option-button>
+              <ion-option-button class="ion-minus-circled button-assertive" ng-click=""></ion-option-button>
+
+            </div>
+          </div>
+        </ion-item>
+      </ion-list>
+
+      <button  class="button button-full icon-left ion-plus-circled button-balanced" ng-click="">Utensílio</button>
+      <ion-list>
+        <ion-item ng-repeat="">
+          <div class="row">
+            <div class="col col-90">
+              {{}}
+              <ion-option-button class="button-positive ion-edit" ng-click=""></ion-option-button>
+              <ion-option-button class="ion-minus-circled button-assertive" ng-click=""></ion-option-button>
+
+            </div>
+          </div>
+        </ion-item>
+      </ion-list>
+
+      <button  class="button button-full icon-left ion-plus-circled button-balanced" ng-click="">Veículo</button>
+      <ion-list>
+        <ion-item ng-repeat="">
+          <div class="row">
+            <div class="col col-90">
+              {{}}
+              <ion-option-button class="button-positive ion-edit" ng-click=""></ion-option-button>
+              <ion-option-button class="ion-minus-circled button-assertive" ng-click=""></ion-option-button>
+
+            </div>
+          </div>
+        </ion-item>
+      </ion-list>
+
+
+      <!--Botões Confirmar e Cancelar-->
+      <div class="row">
+        <div class="col col-60">
+          <button class="button button-block button-positive" ng-click="">
+            Confirmar
+          </button>
+        </div>
+        <div class="col">
+          <button class="button button-block button-assertive" ng-click="back()">
+            Cancelar
+          </button>
+        </div>
+      </div>
+    </ion-content>
+  </ion-view>

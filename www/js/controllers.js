@@ -263,7 +263,7 @@ appctrl.controller('PlanoDeMarketingCtrl', function($scope, $ionicModal, $ionicH
   };
 });
 
-appctrl.controller('PlanoOperacionalCtrl', function($scope, $ionicModal, $ionicHistory, $ionicListDelegate) {
+appctrl.controller('PlanoOperacionalCtrl', function($scope, $ionicModal, $ionicHistory, $ionicListDelegate, Camera) {
   $scope.po = new PlanoOperacional();
   $scope.editar = false;
 
@@ -313,4 +313,59 @@ appctrl.controller('PlanoOperacionalCtrl', function($scope, $ionicModal, $ionicH
       $scope.cargo = new Cargo();
     }
   };
+
+  $scope.takePicture = function (options) {
+
+      var options = {
+         quality : 75,
+         targetWidth: 200,
+         targetHeight: 200,
+         sourceType: 1
+      };
+
+      Camera.getPicture(options).then(function(imageData) {
+         $scope.picture = imageData;;
+      }, function(err) {
+         console.log(err);
+      });
+
+   };
+
+   $scope.getPicture = function (options) {
+
+      var options = {
+         quality : 75,
+         targetWidth: 200,
+         targetHeight: 200,
+         sourceType: 0
+      };
+
+      Camera.getPicture(options).then(function(imageData) {
+         $scope.picture = imageData;;
+      }, function(err) {
+         console.log(err);
+      });
+   };
+
+});
+
+appctrl.controller('PlanoFinanceiroCtrl', function($scope, $ionicModal, $ionicHistory, $ionicListDelegate) {
+
+  $ionicModal.fromTemplateUrl('templates/equipamentos.html', {
+    scope: $scope
+  }).then(function(modal) {
+    $scope.modal = modal;
+  });
+
+  $scope.closeEquipamentos = function() {
+    $scope.modal.hide();
+  };
+
+  $scope.openEquipamentos = function() {
+    $scope.modal.show();
+    if(!$scope.editar){
+      $scope.cargo = new Cargo();
+    }
+  };
+
 });

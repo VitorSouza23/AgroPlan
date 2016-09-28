@@ -4,9 +4,11 @@
       <div class="item item-divider">
         Layout ou Arranjo Físico
       </div>
-      <label class="item item-input" href="#">
-        <input type="text" placeholder="Imagem" ng-model="po.layout">
-      </label>
+        <div class="button-bar">
+          <button class="button button-block icon-left ion-camera button-calm" ng-click = "takePicture()">Tirar Foto</button>
+          <button class="button button-block icon-left ion-images button-energized" ng-click = "getPicture()">Abrir Galeria</button>
+        </div>
+        <img ng-src = "{{picture}}">
       <div class="item item-divider">
         Dados de Capacidade
       </div>
@@ -33,30 +35,30 @@
       </div>
       <button  class="button button-full icon-left ion-plus-circled button-balanced" ng-click="openCargos()">Cargos</button>
       <ion-list>
-      <ion-item ng-repeat="cargo in po.cargos">
-        <div class="row">
-          <div class="col col-90">
+        <ion-item ng-repeat="cargo in po.cargos">
+          <div class="row">
+            <div class="col col-90">
               {{cargo.nome}}
               <ion-option-button class="button-positive ion-edit" ng-click="botaoEditarCargo(cargo)"></ion-option-button>
               <ion-option-button class="ion-minus-circled button-assertive" ng-click="botaoRemoverCargo(cargo)"></ion-option-button>
+            </div>
           </div>
-        </div>
-      </ion-item>
+        </ion-item>
       </ion-list>
 
       <!--Botões Confirmar e Cancelar-->
-    <div class="row">
-      <div class="col col-60">
-        <button class="button button-block button-positive" ng-click="addPlanoOperacional()">
-          Confirmar
-        </button>
+      <div class="row">
+        <div class="col col-60">
+          <button class="button button-block button-positive" ng-click="addPlanoOperacional()">
+            Confirmar
+          </button>
+        </div>
+        <div class="col">
+          <button class="button button-block button-assertive" ng-click="back()">
+            Cancelar
+          </button>
+        </div>
       </div>
-      <div class="col">
-        <button class="button button-block button-assertive" ng-click="back()">
-          Cancelar
-        </button>
-      </div>
-    </div>
 
-  </ion-content>
-</ion-view>
+    </ion-content>
+  </ion-view>

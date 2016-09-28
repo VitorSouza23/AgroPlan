@@ -6,6 +6,24 @@
 // 'starter.controllers' is found in controllers.js
 var app = angular.module('starter', ['ionic', 'starter.controllers']);
 
+app.factory('Camera', function($q) {
+
+   return {
+      getPicture: function(options) {
+         var q = $q.defer();
+
+         navigator.camera.getPicture(function(result) {
+            q.resolve(result);
+         }, function(err) {
+            q.reject(err);
+         }, options);
+
+         return q.promise;
+      }
+   }
+
+});
+
 app.run(function($ionicPlatform, $rootScope) {
   $ionicPlatform.ready(function() {
     // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
@@ -112,8 +130,8 @@ app.config(function($stateProvider, $urlRouterProvider) {
     url: '/playlists/5',
     views: {
       'menuContent': {
-        templateUrl: 'templates/playlist.html',
-        controller: 'PlaylistCtrl'
+        templateUrl: 'templates/planoFinanceiroTemplate.html',
+        controller: 'PlanoFinanceiroCtrl'
       }
     }
   })
@@ -204,6 +222,16 @@ app.config(function($stateProvider, $urlRouterProvider) {
       'menuContent': {
         templateUrl: 'templates/cargos.html',
         controller: 'PlanoOperacionalCtrl'
+      }
+    }
+  })
+
+  .state('app.equipamentos', {
+    url: '/playlists/5/equipamentos',
+    views: {
+      'menuContent': {
+        templateUrl: 'templates/equipamentos.html',
+        controller: 'PlanoDeNegocioCtrl'
       }
     }
   })
