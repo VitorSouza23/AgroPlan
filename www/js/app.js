@@ -231,10 +231,71 @@ app.config(function($stateProvider, $urlRouterProvider) {
     views: {
       'menuContent': {
         templateUrl: 'templates/equipamentos.html',
-        controller: 'PlanoDeNegocioCtrl'
+        controller: 'PlanoFinanceiroCtrl'
       }
     }
   })
+
+  .state('app.maquinas', {
+    url: '/playlists/5/maquinas',
+    views: {
+      'menuContent': {
+        templateUrl: 'templates/maquinas.html',
+        controller: 'PlanoFinanceiroCtrl'
+      }
+    }
+  })
+
+  .state('app.moveis', {
+    url: '/playlists/5/moveis',
+    views: {
+      'menuContent': {
+        templateUrl: 'templates/moveis.html',
+        controller: 'PlanoFinanceiroCtrl'
+      }
+    }
+  })
+
+  .state('app.utensilios', {
+    url: '/playlists/5/utensilios',
+    views: {
+      'menuContent': {
+        templateUrl: 'templates/utensilios.html',
+        controller: 'PlanoFinanceiroCtrl'
+      }
+    }
+  })
+
+  .state('app.veiculos', {
+    url: '/playlists/5/veiculos',
+    views: {
+      'menuContent': {
+        templateUrl: 'templates/veiculos.html',
+        controller: 'PlanoFinanceiroCtrl'
+      }
+    }
+  })
+
+  .state('app.compras', {
+    url: '/playlists/5/compras',
+    views: {
+      'menuContent': {
+        templateUrl: 'templates/compras.html',
+        controller: 'PlanoFinanceiroCtrl'
+      }
+    }
+  })
+
+  .state('app.vendas', {
+    url: '/playlists/5/vendas',
+    views: {
+      'menuContent': {
+        templateUrl: 'templates/vendas.html',
+        controller: 'PlanoFinanceiroCtrl'
+      }
+    }
+  })
+
   ;
 
   // if none of the above states are matched, use this as the fallback

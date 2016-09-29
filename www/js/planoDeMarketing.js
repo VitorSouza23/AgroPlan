@@ -15,7 +15,7 @@ function PlanoDeMarketing(){
 
   this.editarProduto = function(produto){
     var pos = this.produtos.indexOf(produto);
-    this.socios[pos] = produto;
+    this.produtos[pos] = produto;
   }
 }
 

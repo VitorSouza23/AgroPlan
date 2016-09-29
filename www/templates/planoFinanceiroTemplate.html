@@ -5,12 +5,54 @@
       <div class="item item-divider">
         Principais Itens
       </div>
-      <button  class="button button-full icon-left ion-plus-circled button-balanced" ng-click="openEquipamentos()">Esquipamento</button>
+      <button  class="button button-full icon-left ion-plus-circled button-calm" ng-click="openEquipamentos()">Esquipamento</button>
       <ion-list>
-        <ion-item ng-repeat="">
+        <ion-item ng-repeat="equipamento in pf.estoqueInicial.equipamentos">
           <div class="row">
             <div class="col col-90">
-              {{}}
+              {{equipamento.descricao}}
+              <ion-option-button class="button-positive ion-edit" ng-click="botaoEditarEquipamento(equipamento)"></ion-option-button>
+              <ion-option-button class="ion-minus-circled button-assertive" ng-click="botaoRemoverEquipamento(equimapmento)"></ion-option-button>
+
+            </div>
+          </div>
+        </ion-item>
+      </ion-list>
+
+      <button  class="button button-full icon-left ion-plus-circled button-calm" ng-click="openMaquinas()">Maquina</button>
+      <ion-list>
+        <ion-item ng-repeat="maquina in pf.estoqueInicial.maquinas">
+          <div class="row">
+            <div class="col col-90">
+              {{maquina.descricao}}
+              <ion-option-button class="button-positive ion-edit" ng-click="botaoEditarMaquina(maquina)"></ion-option-button>
+              <ion-option-button class="ion-minus-circled button-assertive" ng-click="botaoRemoverMaquina(maquina)"></ion-option-button>
+
+            </div>
+          </div>
+        </ion-item>
+      </ion-list>
+
+      <button  class="button button-full icon-left ion-plus-circled button-calm" ng-click="openMoveis()">Móvel</button>
+      <ion-list>
+        <ion-item ng-repeat="movel in pf.estoqueInicial.moveis">
+          <div class="row">
+            <div class="col col-90">
+              {{movel.descricao}}
+              <ion-option-button class="button-positive ion-edit" ng-click="botaoEditarMovel(movel)"></ion-option-button>
+              <ion-option-button class="ion-minus-circled button-assertive" ng-click="botaoRemoverMovel(movel)"></ion-option-button>
+
+            </div>
+          </div>
+        </ion-item>
+      </ion-list>
+
+      <button  class="button button-full icon-left ion-plus-circled button-calm" ng-click="openUtensilios()">Utensílio</button>
+      <ion-list>
+        <ion-item ng-repeat="utensilio in pf.estoqueInicial.utensilios">
+          <div class="row">
+            <div class="col col-90">
+              {{utensilio.descricao}}
               <ion-option-button class="button-positive ion-edit" ng-click=""></ion-option-button>
               <ion-option-button class="ion-minus-circled button-assertive" ng-click=""></ion-option-button>
 
@@ -19,56 +61,45 @@
         </ion-item>
       </ion-list>
 
-      <button  class="button button-full icon-left ion-plus-circled button-balanced" ng-click="">Maquina</button>
+      <button  class="button button-full icon-left ion-plus-circled button-calm" ng-click="openVeiculos()">Veículo</button>
       <ion-list>
-        <ion-item ng-repeat="">
+        <ion-item ng-repeat="veiculo in pf.estoqueInicial.veiculos">
           <div class="row">
             <div class="col col-90">
-              {{}}
-              <ion-option-button class="button-positive ion-edit" ng-click=""></ion-option-button>
-              <ion-option-button class="ion-minus-circled button-assertive" ng-click=""></ion-option-button>
+              {{veiculo.descricao}}
+              <ion-option-button class="button-positive ion-edit" ng-click="botaoEditarVeiculo(veiculo)"></ion-option-button>
+              <ion-option-button class="ion-minus-circled button-assertive" ng-click="botaoRemoverVeiculo(veiculo)"></ion-option-button>
 
             </div>
           </div>
         </ion-item>
       </ion-list>
 
-      <button  class="button button-full icon-left ion-plus-circled button-balanced" ng-click="">Móvel</button>
+      <div class="item item-divider">
+        Caixa Mínimo
+      </div>
+      <button  class="button button-full icon-left ion-plus-circled button-balanced" ng-click="openCompras()">Compras</button>
       <ion-list>
-        <ion-item ng-repeat="">
+        <ion-item ng-repeat="compra in pf.compras">
           <div class="row">
             <div class="col col-90">
-              {{}}
-              <ion-option-button class="button-positive ion-edit" ng-click=""></ion-option-button>
-              <ion-option-button class="ion-minus-circled button-assertive" ng-click=""></ion-option-button>
+              Prazo de {{compra.dias}} dias
+              <ion-option-button class="button-positive ion-edit" ng-click="botaoEditarCompra(compra)"></ion-option-button>
+              <ion-option-button class="ion-minus-circled button-assertive" ng-click="botaoRemoverCompra(compra)"></ion-option-button>
 
             </div>
           </div>
         </ion-item>
       </ion-list>
 
-      <button  class="button button-full icon-left ion-plus-circled button-balanced" ng-click="">Utensílio</button>
+      <button  class="button button-full icon-left ion-plus-circled button-balanced" ng-click="openVendas()">Vendas</button>
       <ion-list>
-        <ion-item ng-repeat="">
+        <ion-item ng-repeat="venda in pf.vendas">
           <div class="row">
             <div class="col col-90">
-              {{}}
-              <ion-option-button class="button-positive ion-edit" ng-click=""></ion-option-button>
-              <ion-option-button class="ion-minus-circled button-assertive" ng-click=""></ion-option-button>
-
-            </div>
-          </div>
-        </ion-item>
-      </ion-list>
-
-      <button  class="button button-full icon-left ion-plus-circled button-balanced" ng-click="">Veículo</button>
-      <ion-list>
-        <ion-item ng-repeat="">
-          <div class="row">
-            <div class="col col-90">
-              {{}}
-              <ion-option-button class="button-positive ion-edit" ng-click=""></ion-option-button>
-              <ion-option-button class="ion-minus-circled button-assertive" ng-click=""></ion-option-button>
+              Prazo de {{venda.dias}} dias
+              <ion-option-button class="button-positive ion-edit" ng-click="botaoEditarVenda(venda)"></ion-option-button>
+              <ion-option-button class="ion-minus-circled button-assertive" ng-click="botaoRemoverVenda(venda)"></ion-option-button>
 
             </div>
           </div>
@@ -79,7 +110,7 @@
       <!--Botões Confirmar e Cancelar-->
       <div class="row">
         <div class="col col-60">
-          <button class="button button-block button-positive" ng-click="">
+          <button class="button button-block button-positive" ng-click="addPlanoFnanceiro()">
             Confirmar
           </button>
         </div>

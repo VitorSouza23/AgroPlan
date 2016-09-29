@@ -1,5 +1,35 @@
 function PlanoFinanceiro(){
   this.estoqueInicial = new EstoqueInicial();
+  this.vendas = new Array();
+  this.compras = new Array();
+
+  this.addVenda = function(venda){
+    this.vendas.push(venda);
+  };
+
+  this.removerVenda = function(venda){
+    var pos = this.vendas.indexOf(venda);
+    this.vendas.splice(pos,1);
+  };
+
+  this.editarVenda = function(venda){
+    var pos = this.vendas.indexOf(venda);
+    this.vendas[pos] = vendas;
+  };
+
+  this.addCompra = function(compra){
+    this.compras.push(compra);
+  };
+
+  this.removerCompras = function(compra){
+    var pos = this.compras.indexOf(compra);
+    this.compras.splice(pos,1);
+  };
+
+  this.editarCompras = function(compra){
+    var pos = this.compras.indexOf(compra);
+    this.compras[pos] = compra;
+  };
 }
 
 function Equipamento(){
@@ -68,18 +98,18 @@ function EstoqueInicial(){
     this.equipamentos.push(equipamento);
   };
 
-  this.removerEquipamento = function(equimapmento){
-    var pos = this.equipamentos.indexOf(equimapmento);
+  this.removerEquipamento = function(equipamento){
+    var pos = this.equipamentos.indexOf(equipamento);
     this.equipamentos.splice(pos,1);
   };
 
-  this.editarEquipamento = function(equimapmento){
-    var pos = this.equipamentos.indexOf(equimapmento);
-    this.equipamentos[pos] = equimapmento;
+  this.editarEquipamento = function(equipamento){
+    var pos = this.equipamentos.indexOf(equipamento);
+    this.equipamentos[pos] = equipamento;
   };
 
   this.addMaquina = function(maquina){
-    this.maquinas.push(cargo);
+    this.maquinas.push(maquina);
   };
 
   this.removerMaquina = function(maquina){
@@ -93,7 +123,7 @@ function EstoqueInicial(){
   };
 
   this.addMovel = function(movel){
-    this.moveis.push(moveis);
+    this.moveis.push(movel);
   };
 
   this.removerMovel = function(movel){
@@ -134,7 +164,7 @@ function EstoqueInicial(){
     this.veiculos[pos] = veiculo;
   };
 
-  this.valorFinalDeGastosIniciais(){
+  this.valorFinalDeGastosIniciais = function(){
     var valorFinal = 0;
     for(e in this.equipamentos){
       valorFinal += e.calcularTotal();
@@ -152,5 +182,25 @@ function EstoqueInicial(){
       valorFinal += e.calcularTotal();
     }
     return valorFinal;
+  };
+
+
+};
+
+function Venda(){
+  this.dias;
+  this.porcentagem;
+
+  this.calcularMediaPonderadaDeDias = function(){
+    return this.dias * this.porcentagem;
   }
-}
+};
+
+function Compra(){
+  this.dias;
+  this.porcentagem;
+
+  this.calcularMediaPonderadaDeDias = function(){
+    return this.dias * this.porcentagem;
+  }
+};

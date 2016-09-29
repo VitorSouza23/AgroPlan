@@ -33,14 +33,22 @@
       <div class="item item-divider">
         Sócios
       </div>
-        <button  class="button button-full icon-left ion-plus-circled button-balanced" ng-click="openSocios()">Sócio</button>
-      <ion-list>
+      <div class="button-bar">
+        <div class="col col-80">
+        <button  class="button button-block  icon-left ion-plus-circled button-balanced" ng-click="openSocios()">Sócio</button>
+      </div>
+      <div class="col col-20">
+        <button  class="button button-block button-outline icon-center ion-navicon button-balanced" ng-click="mostrarReordem()"></button>
+      </div>
+    </div>
+      <ion-list show-reorder="reordenar">
       <ion-item ng-repeat="socio in su.socios">
         <div class="row">
           <div class="col col-90">
               {{socio.nome}}
               <ion-option-button class="button-positive ion-edit" ng-click="botaoEditarSocio(socio)"></ion-option-button>
               <ion-option-button class="ion-minus-circled button-assertive" ng-click="botaoRemoverSocio(socio)"></ion-option-button>
+              <ion-reorder-button class="ion-navicon" on-reorder="reorderItem(socio, $fromIndex, $toIndex)"></ion-reorder-button>
 
           </div>
         </div>

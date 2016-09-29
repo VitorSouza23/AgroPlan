@@ -64,6 +64,7 @@ appctrl.controller('SumarioExecutivoController', function($scope, $ionicPopup, $
   $scope.su = new SumarioExecutivo();
   $scope.editar = false;
   $scope.cnpjOuCpf = false;
+  $scope.reordenar = false;
   $scope.addSumarioExecutivo = function(){
     $scope.plano.sumarioExecutivo = $scope.su;
     $scope.back();
@@ -115,6 +116,10 @@ appctrl.controller('SumarioExecutivoController', function($scope, $ionicPopup, $
   $scope.back = function(){
     $ionicHistory.goBack();
   };
+
+  $scope.mostrarReordem = function(){
+    $scope.reordenar = $scope.reordenar;
+  }
 });
 
 appctrl.controller('AnaliseDeMercadoController', function($scope, $ionicModal, $ionicHistory, $ionicListDelegate) {
@@ -263,10 +268,21 @@ appctrl.controller('PlanoDeMarketingCtrl', function($scope, $ionicModal, $ionicH
   };
 });
 
-appctrl.controller('PlanoOperacionalCtrl', function($scope, $ionicModal, $ionicHistory, $ionicListDelegate, Camera) {
+appctrl.controller('PlanoOperacionalCtrl', function($scope, $ionicModal, $ionicHistory, $ionicListDelegate, $http, Camera) {
   $scope.po = new PlanoOperacional();
   $scope.editar = false;
 
+ $scope.init = function(){
+
+
+       $http.get('https://api.mlab.com/api/1/databases/agroplan/collections/cargos?apiKey=XRSrAQkYZvpYR1cLVVbR5rknsPC0hZff').
+           then(function(response) {
+               $scope.po.cargos = response.data;
+           });
+
+
+
+ }
   $scope.addPlanoOperacional = function(){
     $scope.plano.PlanoOperacional = $scope.po;
     $scope.back();
@@ -316,56 +332,336 @@ appctrl.controller('PlanoOperacionalCtrl', function($scope, $ionicModal, $ionicH
 
   $scope.takePicture = function (options) {
 
-      var options = {
-         quality : 75,
-         targetWidth: 200,
-         targetHeight: 200,
-         sourceType: 1
-      };
+    var options = {
+      quality : 75,
+      targetWidth: 200,
+      targetHeight: 200,
+      sourceType: 1
+    };
 
-      Camera.getPicture(options).then(function(imageData) {
-         $scope.picture = imageData;;
-      }, function(err) {
-         console.log(err);
-      });
+    Camera.getPicture(options).then(function(imageData) {
+      $scope.picture = imageData;;
+    }, function(err) {
+      console.log(err);
+    });
 
-   };
+  };
 
-   $scope.getPicture = function (options) {
+  $scope.getPicture = function (options) {
 
-      var options = {
-         quality : 75,
-         targetWidth: 200,
-         targetHeight: 200,
-         sourceType: 0
-      };
+    var options = {
+      quality : 75,
+      targetWidth: 200,
+      targetHeight: 200,
+      sourceType: 0
+    };
 
-      Camera.getPicture(options).then(function(imageData) {
-         $scope.picture = imageData;;
-      }, function(err) {
-         console.log(err);
-      });
-   };
+    Camera.getPicture(options).then(function(imageData) {
+      $scope.picture = imageData;;
+    }, function(err) {
+      console.log(err);
+    });
+  };
 
 });
 
 appctrl.controller('PlanoFinanceiroCtrl', function($scope, $ionicModal, $ionicHistory, $ionicListDelegate) {
+  $scope.pf = new PlanoFinanceiro();
+  $scope.editar = false;
+
+  $scope.addPlanoFnanceiro = function(){
+    $scope.plano.planoFinanceiro = $scope.pf;
+    $scope.back();
+  }
+  //Equipamento
+  $scope.addEquipamento = function(){
+    if(!$scope.editar){
+      $scope.pf.estoqueInicial.addEquipamento($scope.equipamento);
+    }else{
+      $scope.pf.estoqueInicial.editarEquipamento($scope.equipamento);
+      $scope.editar = false;
+      $ionicListDelegate.closeOptionButtons();
+    }
+    $scope.closeEquipamentos();
+  };
+
+  $scope.botaoRemoverEquipamento= function(equipamento){
+    $scope.pf.estoqueInicial.removerEquipamento(equipamento);
+  };
+
+  $scope.botaoEditarEquipamento = function(equipamento){
+    $scope.equipamento = equipamento;
+    $scope.editar = true;
+    $scope.openEquipamentos();
+  };
 
   $ionicModal.fromTemplateUrl('templates/equipamentos.html', {
     scope: $scope
   }).then(function(modal) {
-    $scope.modal = modal;
+    $scope.modale = modal;
   });
 
   $scope.closeEquipamentos = function() {
-    $scope.modal.hide();
+    $scope.modale.hide();
+    $scope.equipamento = null;
   };
 
   $scope.openEquipamentos = function() {
-    $scope.modal.show();
+    $scope.modale.show();
     if(!$scope.editar){
-      $scope.cargo = new Cargo();
+      $scope.equipamento = new Equipamento();
     }
   };
+
+  $scope.back = function(){
+    $ionicHistory.goBack();
+  };
+
+  //Máquina
+
+  $scope.addMaquina = function(){
+    if(!$scope.editar){
+      $scope.pf.estoqueInicial.addMaquina($scope.maquina);
+    }else{
+      $scope.pf.estoqueInicial.editarMaquina($scope.maquina);
+      $scope.editar = false;
+      $ionicListDelegate.closeOptionButtons();
+    }
+    $scope.closeMaquinas();
+  };
+
+  $scope.botaoRemoverMaquina= function(maquina){
+    $scope.pf.estoqueInicial.removerMaquina(maquina);
+  };
+
+  $scope.botaoEditarMaquina = function(maquina){
+    $scope.maquina = maquina;
+    $scope.editar = true;
+    $scope.openMaquinas();
+  };
+
+  $ionicModal.fromTemplateUrl('templates/maquinas.html', {
+    scope: $scope
+  }).then(function(modal) {
+    $scope.modalma = modal;
+  });
+
+  $scope.closeMaquinas = function() {
+    $scope.modalma.hide();
+    $scope.maquina = null;
+  };
+
+  $scope.openMaquinas = function() {
+    $scope.modalma.show();
+    if(!$scope.editar){
+      $scope.maquina = new Maquina();
+    }
+  };
+
+  //Móvel
+
+  $scope.addMovel = function(){
+    if(!$scope.editar){
+      $scope.pf.estoqueInicial.addMovel($scope.movel);
+    }else{
+      $scope.pf.estoqueInicial.editarMovel($scope.movel);
+      $scope.editar = false;
+      $ionicListDelegate.closeOptionButtons();
+    }
+    $scope.closeMoveis();
+  };
+
+  $scope.botaoRemoverMovel= function(movel){
+    $scope.pf.estoqueInicial.removerMovel(movel);
+  };
+
+  $scope.botaoEditarMovel= function(movel){
+    $scope.movel = movel;
+    $scope.editar = true;
+    $scope.openMoveis();
+  };
+
+  $ionicModal.fromTemplateUrl('templates/moveis.html', {
+    scope: $scope
+  }).then(function(modal) {
+    $scope.modalmo = modal;
+  });
+
+  $scope.closeMoveis = function() {
+    $scope.modalmo.hide();
+    $scope.movel = null;
+  };
+
+  $scope.openMoveis = function() {
+    $scope.modalmo.show();
+    if(!$scope.editar){
+      $scope.movel = new Movel();
+    }
+  };
+
+  //Utensílios
+
+  $scope.addUtensilio = function(){
+    if(!$scope.editar){
+      $scope.pf.estoqueInicial.addUtensilio($scope.utensilio);
+    }else{
+      $scope.pf.estoqueInicial.editarUtensilio($scope.utensilio);
+      $scope.editar = false;
+      $ionicListDelegate.closeOptionButtons();
+    }
+    $scope.closeUtensilios();
+  };
+
+  $scope.botaoRemoverUtensilio = function(utensilio){
+    $scope.pf.estoqueInicial.removerUtensilio(utensilio);
+  };
+
+  $scope.botaoEditarUtensilio= function(utensilio){
+    $scope.utensilio = utensilio;
+    $scope.editar = true;
+    $scope.openUtensilios();
+  };
+
+  $ionicModal.fromTemplateUrl('templates/utensilios.html', {
+    scope: $scope
+  }).then(function(modal) {
+    $scope.modalu = modal;
+  });
+
+  $scope.closeUtensilios = function() {
+    $scope.modalu.hide();
+    $scope.utensilio = null;
+  };
+
+  $scope.openUtensilios = function() {
+    $scope.modalu.show();
+    if(!$scope.editar){
+      $scope.utensilio = new Utensilio();
+    }
+  };
+
+  //Veíclo
+
+  $scope.addVeiculo = function(){
+    if(!$scope.editar){
+      $scope.pf.estoqueInicial.addVeiculo($scope.veiculo);
+    }else{
+      $scope.pf.estoqueInicial.editarVeiculo($scope.veiculo);
+      $scope.editar = false;
+      $ionicListDelegate.closeOptionButtons();
+    }
+    $scope.closeVeiculos();
+  };
+
+  $scope.botaoRemoverVeiculo = function(veiculo){
+    $scope.pf.estoqueInicial.removerVeiculo(veiculo);
+  };
+
+  $scope.botaoEditarVeiculo= function(veiculo){
+    $scope.veiculo = veiculo;
+    $scope.editar = true;
+    $scope.openVeiculos();
+  };
+
+  $ionicModal.fromTemplateUrl('templates/veiculos.html', {
+    scope: $scope
+  }).then(function(modal) {
+    $scope.modalv = modal;
+  });
+
+  $scope.closeVeiculos = function() {
+    $scope.modalv.hide();
+    $scope.veiculo = null;
+  };
+
+  $scope.openVeiculos = function() {
+    $scope.modalv.show();
+    if(!$scope.editar){
+      $scope.veiculo = new Veiculo();
+    }
+  };
+
+  //venda
+
+  $scope.addVenda = function(){
+    if(!$scope.editar){
+      $scope.pf.addVenda($scope.venda);
+    }else{
+      $scope.pf.editarVenda($scope.venda);
+      $scope.editar = false;
+      $ionicListDelegate.closeOptionButtons();
+    }
+    $scope.closeVendas();
+  };
+
+  $scope.botaoRemoverVenda = function(venda){
+    $scope.pf.removerVenda(venda);
+  };
+
+  $scope.botaoEditarVenda= function(venda){
+    $scope.venda = venda;
+    $scope.editar = true;
+    $scope.openVendas();
+  };
+
+  $ionicModal.fromTemplateUrl('templates/vendas.html', {
+    scope: $scope
+  }).then(function(modal) {
+    $scope.modalven = modal;
+  });
+
+  $scope.closeVendas = function() {
+    $scope.modalven.hide();
+    $scope.venda = null;
+  };
+
+  $scope.openVendas = function() {
+    $scope.modalven.show();
+    if(!$scope.editar){
+      $scope.venda = new Venda();
+    }
+  };
+
+  //compra
+
+  $scope.addCompra = function(){
+    if(!$scope.editar){
+      $scope.pf.addCompra($scope.compra);
+    }else{
+      $scope.pf.editarCompra($scope.compra);
+      $scope.editar = false;
+      $ionicListDelegate.closeOptionButtons();
+    }
+    $scope.closeCompras();
+  };
+
+  $scope.botaoRemoverCompra = function(compra){
+    $scope.pf.removerCompra(compra);
+  };
+
+  $scope.botaoEditarCompra= function(compra){
+    $scope.compra = compra;
+    $scope.editar = true;
+    $scope.openCompras();
+  };
+
+  $ionicModal.fromTemplateUrl('templates/compras.html', {
+    scope: $scope
+  }).then(function(modal) {
+    $scope.modalcom = modal;
+  });
+
+  $scope.closeCompras = function() {
+    $scope.modalcom.hide();
+    $scope.venda = null;
+  };
+
+  $scope.openCompras = function() {
+    $scope.modalcom.show();
+    if(!$scope.editar){
+      $scope.compra = new Compra();
+    }
+  };
+
 
 });
