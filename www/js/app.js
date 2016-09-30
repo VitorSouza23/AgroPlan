@@ -150,8 +150,8 @@ app.config(function($stateProvider, $urlRouterProvider) {
     url: '/playlists/7',
     views: {
       'menuContent': {
-        templateUrl: 'templates/playlist.html',
-        controller: 'PlaylistCtrl'
+        templateUrl: 'templates/analiseFOFA.html',
+        controller: 'AnaliseFOFACtrl'
       }
     }
   })

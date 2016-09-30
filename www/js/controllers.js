@@ -672,3 +672,15 @@ appctrl.controller('PlanoFinanceiroCtrl', function($scope, $ionicModal, $ionicHi
 
 
 });
+
+appctrl.controller('AnaliseFOFACtrl', function($scope, $ionicHistory) {
+  $scope.fofa = new AnaliseFOFA();
+  $scope.addAnaliseFOFA = function(){
+    $scope.plano.analiseFOFA = $scope.fofa;
+    $scope.back();
+  }
+
+  $scope.back = function(){
+    $ionicHistory.goBack();
+  };
+});
