@@ -118,9 +118,16 @@ appctrl.controller('SumarioExecutivoController', function($scope, $ionicPopup, $
   };
 
   $scope.mostrarReordem = function(){
-    $scope.reordenar = $scope.reordenar;
+    $scope.reordenar = !$scope.reordenar;
   }
+
+  $scope.moverSocio = function(item, fromIndex, toIndex) {
+      $scope.su.socios.splice(fromIndex, 1);
+      $scope.su.socios.splice(toIndex, 0, item);
+    };
+
 });
+
 
 appctrl.controller('AnaliseDeMercadoController', function($scope, $ionicModal, $ionicHistory, $ionicListDelegate) {
   $scope.adm = new AnaliseDeMercado();

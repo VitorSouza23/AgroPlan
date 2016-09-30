@@ -48,7 +48,7 @@
               {{socio.nome}}
               <ion-option-button class="button-positive ion-edit" ng-click="botaoEditarSocio(socio)"></ion-option-button>
               <ion-option-button class="ion-minus-circled button-assertive" ng-click="botaoRemoverSocio(socio)"></ion-option-button>
-              <ion-reorder-button class="ion-navicon" on-reorder="reorderItem(socio, $fromIndex, $toIndex)"></ion-reorder-button>
+              <ion-reorder-button class="ion-navicon" on-reorder="moverSocio(socio, $fromIndex, $toIndex)"></ion-reorder-button>
 
           </div>
         </div>
