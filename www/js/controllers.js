@@ -220,6 +220,24 @@ appctrl.controller('AnaliseDeMercadoController', function($scope, $ionicModal, $
     $ionicHistory.goBack();
   };
 
+  $scope.mostrarReordemConcorrente = function(){
+    $scope.reordenarConcorrente = !$scope.reordenarConcorrente;
+  }
+
+  $scope.moverConcorrente = function(item, fromIndex, toIndex) {
+      $scope.adm.concorrentes.splice(fromIndex, 1);
+      $scope.adm.concorrentes.splice(toIndex, 0, item);
+    };
+
+    $scope.mostrarReordemFornecedor = function(){
+      $scope.reordenarFornecedor = !$scope.reordenarFornecedor;
+    }
+
+    $scope.moverFornecedor = function(item, fromIndex, toIndex) {
+        $scope.adm.fornecedores.splice(fromIndex, 1);
+        $scope.adm.fornecedores.splice(toIndex, 0, item);
+      };
+
 });
 
 appctrl.controller('PlanoDeMarketingCtrl', function($scope, $ionicModal, $ionicHistory, $ionicListDelegate) {
@@ -273,6 +291,15 @@ appctrl.controller('PlanoDeMarketingCtrl', function($scope, $ionicModal, $ionicH
       $scope.produto = new Produto();
     }
   };
+
+  $scope.mostrarReordem = function(){
+    $scope.reordenar = !$scope.reordenar;
+  }
+
+  $scope.moverProduto = function(item, fromIndex, toIndex) {
+      $scope.pm.produtos.splice(fromIndex, 1);
+      $scope.pm.produtos.splice(toIndex, 0, item);
+    };
 });
 
 appctrl.controller('PlanoOperacionalCtrl', function($scope, $ionicModal, $ionicHistory, $ionicListDelegate, $http, Camera) {
@@ -370,6 +397,16 @@ appctrl.controller('PlanoOperacionalCtrl', function($scope, $ionicModal, $ionicH
     });
   };
 
+  $scope.mostrarReordem = function(){
+    $scope.reordenar = !$scope.reordenar;
+  }
+
+  $scope.moverCargo = function(item, fromIndex, toIndex) {
+      $scope.po.cargos.splice(fromIndex, 1);
+      $scope.po.cargos.splice(toIndex, 0, item);
+    };
+
+
 });
 
 appctrl.controller('PlanoFinanceiroCtrl', function($scope, $ionicModal, $ionicHistory, $ionicListDelegate) {
@@ -420,6 +457,15 @@ appctrl.controller('PlanoFinanceiroCtrl', function($scope, $ionicModal, $ionicHi
     }
   };
 
+  $scope.mostrarReordemEquipamento = function(){
+    $scope.reordenarEquipamento = !$scope.reordenarEquipamento;
+  }
+
+  $scope.moverEquipamento = function(item, fromIndex, toIndex) {
+      $scope.pf.estoqueInicial.equipamentos.splice(fromIndex, 1);
+      $scope.pf.estoqueInicial.equipamentos.splice(toIndex, 0, item);
+    };
+
   $scope.back = function(){
     $ionicHistory.goBack();
   };
@@ -465,6 +511,16 @@ appctrl.controller('PlanoFinanceiroCtrl', function($scope, $ionicModal, $ionicHi
     }
   };
 
+  $scope.mostrarReordemMaquina = function(){
+    $scope.reordenarMaquina = !$scope.reordenarMaquina;
+  }
+
+  $scope.moverMaquina= function(item, fromIndex, toIndex) {
+      $scope.pf.estoqueInicial.maquinas.splice(fromIndex, 1);
+      $scope.pf.estoqueInicial.maquinas.splice(toIndex, 0, item);
+    };
+
+
   //Móvel
 
   $scope.addMovel = function(){
@@ -505,6 +561,15 @@ appctrl.controller('PlanoFinanceiroCtrl', function($scope, $ionicModal, $ionicHi
       $scope.movel = new Movel();
     }
   };
+
+  $scope.mostrarReordemMovel = function(){
+    $scope.reordenarMovel = !$scope.reordenarMovel;
+  }
+
+  $scope.moverMovel = function(item, fromIndex, toIndex) {
+      $scope.pf.estoqueInicial.moveis.splice(fromIndex, 1);
+      $scope.pf.estoqueInicial.moveis.splice(toIndex, 0, item);
+    };
 
   //Utensílios
 
@@ -547,6 +612,15 @@ appctrl.controller('PlanoFinanceiroCtrl', function($scope, $ionicModal, $ionicHi
     }
   };
 
+  $scope.mostrarReordemUtensilio = function(){
+    $scope.reordenarUtensilio = !$scope.reordenarUtensilio;
+  }
+
+  $scope.moverUtensilio = function(item, fromIndex, toIndex) {
+      $scope.pf.estoqueInicial.utensilios.splice(fromIndex, 1);
+      $scope.pf.estoqueInicial.utensilios.splice(toIndex, 0, item);
+    };
+
   //Veíclo
 
   $scope.addVeiculo = function(){
@@ -587,6 +661,15 @@ appctrl.controller('PlanoFinanceiroCtrl', function($scope, $ionicModal, $ionicHi
       $scope.veiculo = new Veiculo();
     }
   };
+
+  $scope.mostrarReordemVeiculo = function(){
+    $scope.reordenarVeiculo = !$scope.reordenarVeiculo;
+  }
+
+  $scope.moverVeiculo = function(item, fromIndex, toIndex) {
+      $scope.pf.estoqueInicial.veiculos.splice(fromIndex, 1);
+      $scope.pf.estoqueInicial.veiculos.splice(toIndex, 0, item);
+    };
 
   //venda
 
@@ -629,6 +712,15 @@ appctrl.controller('PlanoFinanceiroCtrl', function($scope, $ionicModal, $ionicHi
     }
   };
 
+  $scope.mostrarReordemVenda = function(){
+    $scope.reordenarVenda= !$scope.reordenarVenda;
+  }
+
+  $scope.moverVenda= function(item, fromIndex, toIndex) {
+      $scope.pf.vendas.splice(fromIndex, 1);
+      $scope.pf.vendas.splice(toIndex, 0, item);
+    };
+
   //compra
 
   $scope.addCompra = function(){
@@ -669,7 +761,14 @@ appctrl.controller('PlanoFinanceiroCtrl', function($scope, $ionicModal, $ionicHi
       $scope.compra = new Compra();
     }
   };
+  $scope.mostrarReordemCompra = function(){
+    $scope.reordenarCompra = !$scope.reordenarCompra;
+  }
 
+  $scope.moverCompra = function(item, fromIndex, toIndex) {
+      $scope.pf.compras.splice(fromIndex, 1);
+      $scope.pf.compras.splice(toIndex, 0, item);
+    };
 
 });
 
@@ -683,4 +782,32 @@ appctrl.controller('AnaliseFOFACtrl', function($scope, $ionicHistory) {
   $scope.back = function(){
     $ionicHistory.goBack();
   };
+});
+
+appctrl.controller('AvaliacaoDoPlanoCtrl', function($scope, $ionicHistory) {
+  $scope.ap = new AvaliacaoDoPlano();
+
+  $scope.addAvaliacaoDoPlano = function(){
+    $scope.plano.avalicaoDoPlano = $scope.ap;
+    $scope.back();
+  }
+
+  $scope.back = function(){
+    $ionicHistory.goBack();
+  };
+
+});
+
+appctrl.controller('RoteiroParaColetaCtrl', function($scope, $ionicHistory) {
+  $scope.rpc = new RoteiroParaColeta();
+
+  $scope.addRoteiroParaColeta = function(){
+    $scope.plano.roteiroParaColeta = $scope.rpc;
+    $scope.back();
+  }
+
+  $scope.back = function(){
+    $ionicHistory.goBack();
+  };
+
 });

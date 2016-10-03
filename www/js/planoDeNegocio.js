@@ -5,4 +5,6 @@ function PlanoDeNegocio(){
   this.planoOperacional;
   this.planoFinanceiro;
   this.analiseFOFA;
+  this.avalicaoDoPlano;
+  this.roteiroParaColeta;
 };

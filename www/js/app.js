@@ -160,8 +160,8 @@ app.config(function($stateProvider, $urlRouterProvider) {
     url: '/playlists/8',
     views: {
       'menuContent': {
-        templateUrl: 'templates/playlist.html',
-        controller: 'PlaylistCtrl'
+        templateUrl: 'templates/avaliacaoDoPlanoTemplate.html',
+        controller: 'AvaliacaoDoPlanoCtrl'
       }
     }
   })
@@ -170,8 +170,8 @@ app.config(function($stateProvider, $urlRouterProvider) {
     url: '/playlists/9',
     views: {
       'menuContent': {
-        templateUrl: 'templates/playlist.html',
-        controller: 'PlaylistCtrl'
+        templateUrl: 'templates/roteiroParaColetaTemplate.html',
+        controller: 'RoteiroParaColetaCtrl'
       }
     }
   })

@@ -5,15 +5,22 @@
       <div class="item item-divider">
         Principais Produtos
       </div>
-      <button  class="button button-full icon-left ion-plus-circled button-balanced" ng-click="openProdutos()">Produto</button>
-      <ion-list>
+      <div class="button-bar">
+        <div class="col col-80">
+          <button  class="button button-block icon-left ion-plus-circled button-balanced" ng-click="openProdutos()">Produto</button>
+        </div>
+        <div class="col col-20">
+          <button  class="button button-block button-outline icon-center ion-navicon button-balanced" ng-click="mostrarReordem()"></button>
+        </div>
+      </div>
+      <ion-list show-reorder="reordenar">
         <ion-item ng-repeat="produto in pm.produtos">
           <div class="row">
             <div class="col col-90">
               {{produto.nome}}
               <ion-option-button class="button-positive ion-edit" ng-click="botaoEditarProduto(produto)"></ion-option-button>
               <ion-option-button class="ion-minus-circled button-assertive" ng-click="botaoRemoverProduto(produto)"></ion-option-button>
-
+              <ion-reorder-button class="ion-navicon" on-reorder="moverProduto(produto, $fromIndex, $toIndex)"></ion-reorder-button>
             </div>
           </div>
         </ion-item>

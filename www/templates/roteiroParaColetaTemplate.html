@@ -1,0 +1,134 @@
+<ion-view view-title="Roteiro para Coleta de Informações">
+  <ion-content>
+    <div class="list">
+      <div class="item item-divider item-positive">
+        Sumário Executivo
+      </div>
+        <label class="item item-input" href="#">
+          <span class="input-label">O que?</span>
+          <input type="text"ng-model="rpc.sumarioExecutivo.atividade">
+        </label>
+        <label class="item item-input" href="#">
+          <span class="input-label">Onde?</span>
+          <input type="text"ng-model="rpc.sumarioExecutivo.local">
+        </label>
+        <label class="item item-input" href="#">
+          <span class="input-label">Como?</span>
+          <input type="text" ng-model="rpc.sumarioExecutivo.metodo">
+        </label>
+        <label class="item item-input" href="#">
+          <span class="input-label">Quando?</span>
+          <input type="text"ng-model="rpc.sumarioExecutivo.prazo">
+        </label>
+        <label class="item item-input" href="#">
+          <span class="input-label">Quem?</span>
+          <input type="text"ng-model="rpc.sumarioExecutivo.responsavel">
+        </label>
+        <div class="item item-divider item-assertive">
+          Análise de Mercado
+        </div>
+        <label class="item item-input" href="#">
+          <span class="input-label">O que?</span>
+          <input type="text"ng-model="rpc.analiseDeMercado.atividade">
+        </label>
+        <label class="item item-input" href="#">
+          <span class="input-label">Onde?</span>
+          <input type="text"ng-model="rpc.analiseDeMercado.local">
+        </label>
+        <label class="item item-input" href="#">
+          <span class="input-label">Como?</span>
+          <input type="text" ng-model="rpc.analiseDeMercado.metodo">
+        </label>
+        <label class="item item-input" href="#">
+          <span class="input-label">Quando?</span>
+          <input type="text"ng-model="rpc.analiseDeMercado.prazo">
+        </label>
+        <label class="item item-input" href="#">
+          <span class="input-label">Quem?</span>
+          <input type="text"ng-model="rpc.analiseDeMercado.responsavel">
+        </label>
+        <div class="item item-divider item-calm">
+          Plano de Marketing
+        </div>
+        <label class="item item-input" href="#">
+          <span class="input-label">O que?</span>
+          <input type="text"ng-model="rpc.planoDeMarketing.atividade">
+        </label>
+        <label class="item item-input" href="#">
+          <span class="input-label">Onde?</span>
+          <input type="text"ng-model="rpc.planoDeMarketing.local">
+        </label>
+        <label class="item item-input" href="#">
+          <span class="input-label">Como?</span>
+          <input type="text" ng-model="rpc.planoDeMarketing.metodo">
+        </label>
+        <label class="item item-input" href="#">
+          <span class="input-label">Quando?</span>
+          <input type="text"ng-model="rpc.planoDeMarketing.prazo">
+        </label>
+        <label class="item item-input" href="#">
+          <span class="input-label">Quem?</span>
+          <input type="text"ng-model="rpc.planoDeMarketing.responsavel">
+        </label>
+        <div class="item item-divider item-balanced">
+          Plano Operácional
+        </div>
+        <label class="item item-input" href="#">
+          <span class="input-label">O que?</span>
+          <input type="text"ng-model="rpc.planoOperacional.atividade">
+        </label>
+        <label class="item item-input" href="#">
+          <span class="input-label">Onde?</span>
+          <input type="text"ng-model="rpc.planoOperacional.local">
+        </label>
+        <label class="item item-input" href="#">
+          <span class="input-label">Como?</span>
+          <input type="text" ng-model="rpc.planoOperacional.metodo">
+        </label>
+        <label class="item item-input" href="#">
+          <span class="input-label">Quando?</span>
+          <input type="text"ng-model="rpc.planoOperacional.prazo">
+        </label>
+        <label class="item item-input" href="#">
+          <span class="input-label">Quem?</span>
+          <input type="text"ng-model="rpc.planoOperacional.responsavel">
+        </label>
+        <div class="item item-divider item-energized">
+          Plano Financeiro
+        </div>
+        <label class="item item-input" href="#">
+          <span class="input-label">O que?</span>
+          <input type="text"ng-model="rpc.planoFinanceiro.atividade">
+        </label>
+        <label class="item item-input" href="#">
+          <span class="input-label">Onde?</span>
+          <input type="text"ng-model="rpc.planoFinanceiro.local">
+        </label>
+        <label class="item item-input" href="#">
+          <span class="input-label">Como?</span>
+          <input type="text" ng-model="rpc.planoFinanceiro.metodo">
+        </label>
+        <label class="item item-input" href="#">
+          <span class="input-label">Quando?</span>
+          <input type="text"ng-model="rpc.planoFinanceiro.prazo">
+        </label>
+        <label class="item item-input" href="#">
+          <span class="input-label">Quem?</span>
+          <input type="text"ng-model="rpc.planoFinanceiro.reponsavel">
+        </label>
+
+        <!--Botões Confirmar e Cancelar-->
+      <div class="row">
+        <div class="col col-60">
+          <button class="button button-block button-positive" ng-click="addRoteiroParaColeta()">
+            Confirmar
+          </button>
+        </div>
+        <div class="col">
+          <button class="button button-block button-assertive" ng-click="back()">
+            Cancelar
+          </button>
+        </div>
+      </div>
+  </ion-content>
+</ion-view>
