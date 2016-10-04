@@ -46,6 +46,7 @@ app.run(function($ionicPlatform, $rootScope) {
     localStorage.setItem("plano", planoSalvo);
     $rootScope.plano = new PlanoDeNegocio();
   };
+
 });
 
 app.config(function($stateProvider, $urlRouterProvider) {
@@ -140,8 +141,8 @@ app.config(function($stateProvider, $urlRouterProvider) {
     url: '/playlists/6',
     views: {
       'menuContent': {
-        templateUrl: 'templates/playlist.html',
-        controller: 'PlaylistCtrl'
+        templateUrl: 'templates/construcaoDeCenariosTemplate.html',
+        controller: 'ConstrucaoDeCenarioCtrl'
       }
     }
   })

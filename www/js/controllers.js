@@ -42,18 +42,22 @@ appctrl.controller('AppCtrl', function($scope, $ionicModal, $timeout) {
   };
 });
 
-appctrl.controller('PlaylistsCtrl', function($scope) {
+appctrl.controller('PlaylistsCtrl', function($scope, $rootScope) {
   $scope.playlists = [
-    { title: 'Sumário Executivo', id: 1 },
-    { title: 'Análise de Mercado', id: 2 },
-    { title: 'Plano de Marketing', id: 3 },
-    { title: 'Plano Operacional', id: 4 },
-    { title: 'Plano Financeiro', id: 5 },
-    { title: 'Construção de Cenários', id: 6 },
-    { title: 'Avaliação Estratégica', id: 7 },
-    { title: 'Avaliação do Plano de Negócios', id: 8 },
-    { title: 'Roteiro para Coleta de Informação', id: 9 }
+    { title: 'Sumário Executivo', id: 1, terminado: true},
+    { title: 'Análise de Mercado', id: 2, terminado: true},
+    { title: 'Plano de Marketing', id: 3, terminado: true },
+    { title: 'Plano Operacional', id: 4, terminado: true },
+    { title: 'Plano Financeiro', id: 5, terminado: true },
+    { title: 'Construção de Cenários', id: 6, terminado: true },
+    { title: 'Avaliação Estratégica', id: 7, terminado: true },
+    { title: 'Avaliação do Plano de Negócios', id: 8, terminado: true },
+    { title: 'Roteiro para Coleta de Informação', id: 9, terminado: true }
   ];
+
+  $rootScope.mudarTerminado = function(id){
+    $scope.playlists[id].terminado = !$scope.playlists[id].terminado;
+  }
 });
 
 appctrl.controller('PlaylistCtrl', function($scope, $rootScope) {
@@ -65,9 +69,11 @@ appctrl.controller('SumarioExecutivoController', function($scope, $ionicPopup, $
   $scope.editar = false;
   $scope.cnpjOuCpf = false;
   $scope.reordenar = false;
+
   $scope.addSumarioExecutivo = function(){
     $scope.plano.sumarioExecutivo = $scope.su;
     $scope.back();
+    $scope.mudarTerminado(0);
   };
 
   $scope.escolherCnpjOuCpf = function(){
@@ -136,6 +142,7 @@ appctrl.controller('AnaliseDeMercadoController', function($scope, $ionicModal, $
   $scope.addAnaliseDeMercado = function(){
     $scope.plano.analiseDeMercado = $scope.adm;
     $scope.back();
+    $scope.mudarTerminado(1);
   }
 
   $scope.addConcorrente = function(){
@@ -248,6 +255,7 @@ appctrl.controller('PlanoDeMarketingCtrl', function($scope, $ionicModal, $ionicH
   $scope.addPlanoDeMarketing = function(){
     $scope.plano.planoDeMarketing = $scope.pm;
     $scope.back();
+    $scope.mudarTerminado(2);
   }
 
   $scope.addProduto = function(){
@@ -320,6 +328,7 @@ appctrl.controller('PlanoOperacionalCtrl', function($scope, $ionicModal, $ionicH
   $scope.addPlanoOperacional = function(){
     $scope.plano.PlanoOperacional = $scope.po;
     $scope.back();
+    $scope.mudarTerminado(3);
   };
 
   $scope.addCargo = function(){
@@ -416,6 +425,7 @@ appctrl.controller('PlanoFinanceiroCtrl', function($scope, $ionicModal, $ionicHi
   $scope.addPlanoFnanceiro = function(){
     $scope.plano.planoFinanceiro = $scope.pf;
     $scope.back();
+    $scope.mudarTerminado(4);
   }
   //Equipamento
   $scope.addEquipamento = function(){
@@ -772,11 +782,27 @@ appctrl.controller('PlanoFinanceiroCtrl', function($scope, $ionicModal, $ionicHi
 
 });
 
+appctrl.controller('ConstrucaoDeCenarioCtrl', function($scope, $ionicHistory) {
+  $scope.cdc = new ConstrucaoDeCenario();
+  $scope.addConstrucaoDeCenarios = function(){
+    $scope.plano.construcaoDeCenarios = $scope.cdc;
+    $scope.back();
+    $scope.mudarTerminado(6);
+  }
+
+  $scope.back = function(){
+    $ionicHistory.goBack();
+  };
+});
+
+
+
 appctrl.controller('AnaliseFOFACtrl', function($scope, $ionicHistory) {
   $scope.fofa = new AnaliseFOFA();
   $scope.addAnaliseFOFA = function(){
     $scope.plano.analiseFOFA = $scope.fofa;
     $scope.back();
+    $scope.mudarTerminado(6);
   }
 
   $scope.back = function(){
@@ -790,6 +816,7 @@ appctrl.controller('AvaliacaoDoPlanoCtrl', function($scope, $ionicHistory) {
   $scope.addAvaliacaoDoPlano = function(){
     $scope.plano.avalicaoDoPlano = $scope.ap;
     $scope.back();
+    $scope.mudarTerminado(7);
   }
 
   $scope.back = function(){
@@ -804,6 +831,7 @@ appctrl.controller('RoteiroParaColetaCtrl', function($scope, $ionicHistory) {
   $scope.addRoteiroParaColeta = function(){
     $scope.plano.roteiroParaColeta = $scope.rpc;
     $scope.back();
+    $scope.mudarTerminado(8);
   }
 
   $scope.back = function(){

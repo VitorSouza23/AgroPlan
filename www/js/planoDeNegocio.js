@@ -4,6 +4,7 @@ function PlanoDeNegocio(){
   this.planoDeMarketing;
   this.planoOperacional;
   this.planoFinanceiro;
+  this.construcaoDeCenarios;
   this.analiseFOFA;
   this.avalicaoDoPlano;
   this.roteiroParaColeta;
