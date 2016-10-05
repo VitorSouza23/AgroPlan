@@ -400,7 +400,7 @@ appctrl.controller('PlanoOperacionalCtrl', function($scope, $ionicModal, $ionicH
     };
 
     Camera.getPicture(options).then(function(imageData) {
-      $scope.picture = imageData;;
+      $scope.picture = imageData;
     }, function(err) {
       console.log(err);
     });

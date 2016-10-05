@@ -24,7 +24,7 @@ app.factory('Camera', function($q) {
 
 });
 
-app.run(function($ionicPlatform, $rootScope) {
+app.run(function($ionicPlatform, $rootScope, $http) {
   $ionicPlatform.ready(function() {
     // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
     // for form inputs)
@@ -44,6 +44,7 @@ app.run(function($ionicPlatform, $rootScope) {
   $rootScope.salvarPlano = function(){
     var planoSalvo = angular.toJson($rootScope.plano);
     localStorage.setItem("plano", planoSalvo);
+    $http.post('https://api.mlab.com/api/1/databases/agroplan/collections/planoDeNegocio?apiKey=XRSrAQkYZvpYR1cLVVbR5rknsPC0hZff', planoSalvo);
     $rootScope.plano = new PlanoDeNegocio();
   };
 

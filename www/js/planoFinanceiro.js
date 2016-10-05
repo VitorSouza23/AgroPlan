@@ -21,12 +21,12 @@ function PlanoFinanceiro(){
     this.compras.push(compra);
   };
 
-  this.removerCompras = function(compra){
+  this.removerCompra = function(compra){
     var pos = this.compras.indexOf(compra);
     this.compras.splice(pos,1);
   };
 
-  this.editarCompras = function(compra){
+  this.editarCompra = function(compra){
     var pos = this.compras.indexOf(compra);
     this.compras[pos] = compra;
   };
