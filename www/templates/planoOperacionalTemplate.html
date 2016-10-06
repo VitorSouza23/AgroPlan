@@ -1,4 +1,4 @@
-<ion-view view-title="Plano Operácional" ng-init="init()">
+<ion-view view-title="Plano Operácional">
   <ion-content>
     <div class="list">
       <div class="item item-divider">
@@ -8,7 +8,10 @@
         <button class="button button-block icon-left ion-camera button-calm" ng-click = "takePicture()">Tirar Foto</button>
         <button class="button button-block icon-left ion-images button-energized" ng-click = "getPicture()">Abrir Galeria</button>
       </div>
-      <img ng-src = "{{user.picture}}">
+      <div class="item item-image">
+        <img ng-src="{{picture}}">
+      </div>
+
       <div class="item item-divider">
         Dados de Capacidade
       </div>

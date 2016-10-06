@@ -128,9 +128,9 @@ appctrl.controller('SumarioExecutivoController', function($scope, $ionicPopup, $
   }
 
   $scope.moverSocio = function(item, fromIndex, toIndex) {
-      $scope.su.socios.splice(fromIndex, 1);
-      $scope.su.socios.splice(toIndex, 0, item);
-    };
+    $scope.su.socios.splice(fromIndex, 1);
+    $scope.su.socios.splice(toIndex, 0, item);
+  };
 
 });
 
@@ -232,18 +232,18 @@ appctrl.controller('AnaliseDeMercadoController', function($scope, $ionicModal, $
   }
 
   $scope.moverConcorrente = function(item, fromIndex, toIndex) {
-      $scope.adm.concorrentes.splice(fromIndex, 1);
-      $scope.adm.concorrentes.splice(toIndex, 0, item);
-    };
+    $scope.adm.concorrentes.splice(fromIndex, 1);
+    $scope.adm.concorrentes.splice(toIndex, 0, item);
+  };
 
-    $scope.mostrarReordemFornecedor = function(){
-      $scope.reordenarFornecedor = !$scope.reordenarFornecedor;
-    }
+  $scope.mostrarReordemFornecedor = function(){
+    $scope.reordenarFornecedor = !$scope.reordenarFornecedor;
+  }
 
-    $scope.moverFornecedor = function(item, fromIndex, toIndex) {
-        $scope.adm.fornecedores.splice(fromIndex, 1);
-        $scope.adm.fornecedores.splice(toIndex, 0, item);
-      };
+  $scope.moverFornecedor = function(item, fromIndex, toIndex) {
+    $scope.adm.fornecedores.splice(fromIndex, 1);
+    $scope.adm.fornecedores.splice(toIndex, 0, item);
+  };
 
 });
 
@@ -305,26 +305,26 @@ appctrl.controller('PlanoDeMarketingCtrl', function($scope, $ionicModal, $ionicH
   }
 
   $scope.moverProduto = function(item, fromIndex, toIndex) {
-      $scope.pm.produtos.splice(fromIndex, 1);
-      $scope.pm.produtos.splice(toIndex, 0, item);
-    };
+    $scope.pm.produtos.splice(fromIndex, 1);
+    $scope.pm.produtos.splice(toIndex, 0, item);
+  };
 });
 
 appctrl.controller('PlanoOperacionalCtrl', function($scope, $ionicModal, $ionicHistory, $ionicListDelegate, $http, Camera) {
   $scope.po = new PlanoOperacional();
   $scope.editar = false;
 
- $scope.init = function(){
+  $scope.init = function(){
 
 
-       $http.get('https://api.mlab.com/api/1/databases/agroplan/collections/cargos?apiKey=XRSrAQkYZvpYR1cLVVbR5rknsPC0hZff').
-           then(function(response) {
-               $scope.po.cargos = response.data;
-           });
+    $http.get('https://api.mlab.com/api/1/databases/agroplan/collections/cargos?apiKey=XRSrAQkYZvpYR1cLVVbR5rknsPC0hZff').
+    then(function(response) {
+      $scope.po.cargos = response.data;
+    });
 
 
 
- }
+  }
   $scope.addPlanoOperacional = function(){
     $scope.plano.PlanoOperacional = $scope.po;
     $scope.back();
@@ -373,9 +373,12 @@ appctrl.controller('PlanoOperacionalCtrl', function($scope, $ionicModal, $ionicH
     }
   };
 
-  $scope.takePicture = function (options) {
+  $scope.takePicture = function () {
 
     var options = {
+      destinationType : Camera.DestinationType.DATA_URL,
+      sourceType : Camera.PictureSourceType.CAMERA,
+      encodingType: Camera.EncodingType.JPEG,
       quality : 75,
       targetWidth: 200,
       targetHeight: 200,
@@ -383,16 +386,19 @@ appctrl.controller('PlanoOperacionalCtrl', function($scope, $ionicModal, $ionicH
     };
 
     Camera.getPicture(options).then(function(imageData) {
-      $scope.picture = imageData;;
+      $scope.picture = "data:image/jpeg;base64," + imageData;
     }, function(err) {
       console.log(err);
     });
 
   };
 
-  $scope.getPicture = function (options) {
+  $scope.getPicture = function () {
 
     var options = {
+      destinationType : Camera.DestinationType.DATA_URL,
+      sourceType : Camera.PictureSourceType.CAMERA,
+      encodingType: Camera.EncodingType.JPEG,
       quality : 75,
       targetWidth: 200,
       targetHeight: 200,
@@ -400,7 +406,7 @@ appctrl.controller('PlanoOperacionalCtrl', function($scope, $ionicModal, $ionicH
     };
 
     Camera.getPicture(options).then(function(imageData) {
-      $scope.picture = imageData;
+      $scope.picture = "data:image/jpeg;base64," + imageData;
     }, function(err) {
       console.log(err);
     });
@@ -411,9 +417,9 @@ appctrl.controller('PlanoOperacionalCtrl', function($scope, $ionicModal, $ionicH
   }
 
   $scope.moverCargo = function(item, fromIndex, toIndex) {
-      $scope.po.cargos.splice(fromIndex, 1);
-      $scope.po.cargos.splice(toIndex, 0, item);
-    };
+    $scope.po.cargos.splice(fromIndex, 1);
+    $scope.po.cargos.splice(toIndex, 0, item);
+  };
 
 
 });
@@ -472,9 +478,9 @@ appctrl.controller('PlanoFinanceiroCtrl', function($scope, $ionicModal, $ionicHi
   }
 
   $scope.moverEquipamento = function(item, fromIndex, toIndex) {
-      $scope.pf.estoqueInicial.equipamentos.splice(fromIndex, 1);
-      $scope.pf.estoqueInicial.equipamentos.splice(toIndex, 0, item);
-    };
+    $scope.pf.estoqueInicial.equipamentos.splice(fromIndex, 1);
+    $scope.pf.estoqueInicial.equipamentos.splice(toIndex, 0, item);
+  };
 
   $scope.back = function(){
     $ionicHistory.goBack();
@@ -526,9 +532,9 @@ appctrl.controller('PlanoFinanceiroCtrl', function($scope, $ionicModal, $ionicHi
   }
 
   $scope.moverMaquina= function(item, fromIndex, toIndex) {
-      $scope.pf.estoqueInicial.maquinas.splice(fromIndex, 1);
-      $scope.pf.estoqueInicial.maquinas.splice(toIndex, 0, item);
-    };
+    $scope.pf.estoqueInicial.maquinas.splice(fromIndex, 1);
+    $scope.pf.estoqueInicial.maquinas.splice(toIndex, 0, item);
+  };
 
 
   //Móvel
@@ -577,9 +583,9 @@ appctrl.controller('PlanoFinanceiroCtrl', function($scope, $ionicModal, $ionicHi
   }
 
   $scope.moverMovel = function(item, fromIndex, toIndex) {
-      $scope.pf.estoqueInicial.moveis.splice(fromIndex, 1);
-      $scope.pf.estoqueInicial.moveis.splice(toIndex, 0, item);
-    };
+    $scope.pf.estoqueInicial.moveis.splice(fromIndex, 1);
+    $scope.pf.estoqueInicial.moveis.splice(toIndex, 0, item);
+  };
 
   //Utensílios
 
@@ -627,9 +633,9 @@ appctrl.controller('PlanoFinanceiroCtrl', function($scope, $ionicModal, $ionicHi
   }
 
   $scope.moverUtensilio = function(item, fromIndex, toIndex) {
-      $scope.pf.estoqueInicial.utensilios.splice(fromIndex, 1);
-      $scope.pf.estoqueInicial.utensilios.splice(toIndex, 0, item);
-    };
+    $scope.pf.estoqueInicial.utensilios.splice(fromIndex, 1);
+    $scope.pf.estoqueInicial.utensilios.splice(toIndex, 0, item);
+  };
 
   //Veíclo
 
@@ -677,9 +683,9 @@ appctrl.controller('PlanoFinanceiroCtrl', function($scope, $ionicModal, $ionicHi
   }
 
   $scope.moverVeiculo = function(item, fromIndex, toIndex) {
-      $scope.pf.estoqueInicial.veiculos.splice(fromIndex, 1);
-      $scope.pf.estoqueInicial.veiculos.splice(toIndex, 0, item);
-    };
+    $scope.pf.estoqueInicial.veiculos.splice(fromIndex, 1);
+    $scope.pf.estoqueInicial.veiculos.splice(toIndex, 0, item);
+  };
 
   //venda
 
@@ -727,9 +733,9 @@ appctrl.controller('PlanoFinanceiroCtrl', function($scope, $ionicModal, $ionicHi
   }
 
   $scope.moverVenda= function(item, fromIndex, toIndex) {
-      $scope.pf.vendas.splice(fromIndex, 1);
-      $scope.pf.vendas.splice(toIndex, 0, item);
-    };
+    $scope.pf.vendas.splice(fromIndex, 1);
+    $scope.pf.vendas.splice(toIndex, 0, item);
+  };
 
   //compra
 
@@ -776,9 +782,9 @@ appctrl.controller('PlanoFinanceiroCtrl', function($scope, $ionicModal, $ionicHi
   }
 
   $scope.moverCompra = function(item, fromIndex, toIndex) {
-      $scope.pf.compras.splice(fromIndex, 1);
-      $scope.pf.compras.splice(toIndex, 0, item);
-    };
+    $scope.pf.compras.splice(fromIndex, 1);
+    $scope.pf.compras.splice(toIndex, 0, item);
+  };
 
 });
 
